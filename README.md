@@ -24,3 +24,5 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+Alternatively, simply download the complete project from the website, install the requierments and run the main. Please download all files in the repository, as both the database and the two “Beispiel” Word files are relevant.
