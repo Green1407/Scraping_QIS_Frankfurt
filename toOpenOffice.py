@@ -39,7 +39,7 @@ def fill_word(name: str, semester: str, data: list[str], institute_data: pd.Data
 
     # Make sure the export directory exists and export the new doc with an appropriate title
     os.makedirs("Word_Exporte", exist_ok=True)
-    doc.save("Word_Exporte/" + semester.replace(" ", "").replace("/","-") + "_" + name.replace(" ", "_").replace("*","") + "_Formular_A38.docx")
+    doc.save("Word_Exporte/" + semester.replace(" ", "").replace("/","-") + "_" + name.replace(" ", "_").replace("*","").replace("/","-") + "_Formular_A38.docx")
 
     return doc
 
