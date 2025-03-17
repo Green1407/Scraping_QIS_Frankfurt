@@ -1,6 +1,11 @@
-# Scraping QIS of Goethe Uni Frankfurt
+# Scraping QIS of Goethe University Frankfurt  
 
-The aim of this project is to provide a tool that can automatically read the lecture data from the course catalog of the Goethe University Frankfurt semester by semester. 
-The read data is saved, converted into a DataFrame and can finally be exported as individual word files for each lecturer. The Word files contain all the courses and the course information for which the lecturer is responsible.
+This project aims to provide a tool that automatically extracts lecture data from the course catalog of Goethe University Frankfurt on a semester-by-semester basis.  
+
+The retrieved data is stored, converted into a DataFrame and can be exported as individual Word files for each lecturer. These Word files contain all courses and relevant course details assigned to the respective lecturer.  
+
+Please note that the script operates on the following website:  
+[QIS Goethe University Frankfurt](https://qis.server.uni-frankfurt.de/qisserver/rds?state=user&type=0&category=auth.redirect).  
+If the website’s structure changes, adjustments—particularly in the `scraper.py` and `scraper_request_bf` scripts—may be necessary to ensure continued functionality.  
 
 # Installation
