@@ -9,3 +9,18 @@ Please note that the script operates on the following website:
 If the website’s structure changes, adjustments—particularly in the `scraper.py` and `scraper_request_bf` scripts—may be necessary to ensure continued functionality.  
 
 # Installation
+**Clone project**
+```bash
+git clone https://github.com/Green1407/Scraping_QIS_Frankfurt
+cd Scraping_QIS_Frankfurt
+```
+
+**Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**Run the project**
+```bash
+python main.py
+```
