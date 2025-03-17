@@ -36,6 +36,8 @@ Alternatively, simply download the complete project from the website, install th
 
 ![Screenshot of the application](example_images/example1.PNG) 
 
+3. The export is then saved in the Word_Exports folder. An export was created here for the example and is located in this repository in the corresponding folder.
+
 # Notes
 All functions are also described in detail in the streamlit application.
 The scraping process can take some time, the progress can be viewed via the console.
