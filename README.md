@@ -31,3 +31,7 @@ Alternatively, simply download the complete project from the website, install th
 1. After setup start the main.py, now Streamlit should open a website in your browser that looks like this:
 
 ![Screenshot of the application](example_images/startbildschirm.PNG) 
+
+2. Now you can either scrape new semesters via the section on the left or call up current data via the select box. In the example here, all course data for Prof. Dr. Ulrich Meyer is retrieved for the summer semester 2025 and output as a table, which can now be exported as Word via the button:
+
+![Screenshot of the application](example_images/example1.PNG) 
