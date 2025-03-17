@@ -35,3 +35,7 @@ Alternatively, simply download the complete project from the website, install th
 2. Now you can either scrape new semesters via the section on the left or call up current data via the select box. In the example here, all course data for Prof. Dr. Ulrich Meyer is retrieved for the summer semester 2025 and output as a table, which can now be exported as Word via the button:
 
 ![Screenshot of the application](example_images/example1.PNG) 
+
+# Notes
+All functions are also described in detail in the streamlit application.
+The scraping process can take some time, the progress can be viewed via the console.
