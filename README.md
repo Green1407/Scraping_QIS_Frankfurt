@@ -6,7 +6,7 @@ The retrieved data is stored, converted into a DataFrame and can be exported as 
 
 Please note that the script operates on the following website:  
 [QIS Goethe University Frankfurt](https://qis.server.uni-frankfurt.de/qisserver/rds?state=user&type=0&category=auth.redirect).  
-If the website’s structure changes, adjustments—particularly in the `scraper.py` and `scraper_request_bf` scripts—may be necessary to ensure continued functionality.  
+If the website’s structure changes, adjustments—particularly in the `scraper.py` and `scraper_request_bf.py` scripts—may be necessary to ensure continued functionality.  
 
 # Installation
 **Clone project**
