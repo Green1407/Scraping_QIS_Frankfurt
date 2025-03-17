@@ -26,3 +26,8 @@ python main.py
 ```
 
 Alternatively, simply download the complete project from the website, install the requierments and run the main. Please download all files in the repository, as both the database and the two “Beispiel” Word files are relevant.
+
+# Example Use
+1. After setup start the main.py, now Streamlit should open a website in your browser that looks like this:
+
+![Screenshot of the application](images/example.png)
