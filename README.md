@@ -30,4 +30,4 @@ Alternatively, simply download the complete project from the website, install th
 # Example Use
 1. After setup start the main.py, now Streamlit should open a website in your browser that looks like this:
 
-![Screenshot of the application](example_images\startbildschirm.png) 
+![Screenshot of the application](example_images\startbildschirm.PNG) 
