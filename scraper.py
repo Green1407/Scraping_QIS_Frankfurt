@@ -364,7 +364,6 @@ def get_institut_by_person(driver: WebDriver) -> Tuple[str, str]:
         first_institute = institute.text.strip()
     except:
         first_institute = "Bitte manuell einfügen"  # Default value if institute is not found
-
     return (name_format,first_institute)
 
 

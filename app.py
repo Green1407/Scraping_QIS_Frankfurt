@@ -58,7 +58,7 @@ def refresh_data(bool_empty: bool) -> Tuple[pd.DataFrame, list[str], list[str]]:
     """
     # Load course data from the database
     get_data = Database.read_course_data("Database/")
-
+    print("refreshed")
     # Optionally process empty courses if enabled
     if bool_empty == True:
         get_data = Database.fix_empty_courses(get_data)
@@ -318,7 +318,10 @@ def scrape_buttons():
                     with st.spinner("Scraping läuft (Vorgang kann bis zu 2 Stunden dauern"
                                     ", für Fortschritt Konsole beachten)..."):
                         if scraping_aktiviert:
+                            startzeit = time.perf_counter()
                             scraper.scrape_semester(semester)
+                            endzeit = time.perf_counter()
+                            print(endzeit - startzeit)
                         elif scraping_requests:
                             startzeit = time.perf_counter()
                             scraper_request_bf.scrape_semester(semester)
@@ -329,7 +332,10 @@ def scrape_buttons():
                     with st.spinner("Scraping läuft (Vorgang dauert etwa 30 Minuten"
                                     ", für Fortschritt Konsole beachten)..."):
                         if scraping_aktiviert:
+                            startzeit = time.perf_counter()
                             scraper.scrape_personal()
+                            endzeit = time.perf_counter()
+                            print(endzeit - startzeit)
                         elif scraping_requests:
                             startzeit = time.perf_counter()
                             scraper_request_bf.scrape_personal()
@@ -395,24 +401,34 @@ def run_gui() -> None:
     """
     # Set up the page layout and logo
     st.set_page_config(
-        page_title="QIS-Scraping Tool",  # Titel der Website
-        page_icon="📚",  # Favicon (kann auch eine URL oder ein Emoji sein)
-        layout="wide",  # Optionen: "centered" (Standard), "wide"
+        page_title="QIS-Scraping Tool",
+        page_icon="📚",
+        layout="wide",
     )
     add_title_logo()
 
     # Creates the 3 select boxes for the user
     export_mode = checkbox_export_multiple()
     data_clean = checkbox_data_cleaning()
-    if "prev_empty_course_check" not in st.session_state:
-        st.session_state.prev_empty_course_check = None # session state for empty course check select option
     empty_course_check = checkbox_empty_courses()
-    if empty_course_check != st.session_state.prev_empty_course_check:
-        current_data, unique_names, unique_semesters,institute_data = load_data(empty_course_check) #if option selected reload data
+
+
+    if "data_loaded" not in st.session_state:
+        # Intialize the data when no data was loaded before
+        current_data, unique_names, unique_semesters, institute_data = load_data(empty_course_check)
+        st.session_state.data_loaded = (current_data, unique_names, unique_semesters, institute_data)
         st.session_state.prev_empty_course_check = empty_course_check
+    else:
+        # If the empty course checkbox changes, reload the data with empty course check = 1
+        if empty_course_check != st.session_state.prev_empty_course_check:
+            current_data, unique_names, unique_semesters, institute_data = load_data(empty_course_check)
+            st.session_state.data_loaded = (current_data, unique_names, unique_semesters, institute_data)
+            st.session_state.prev_empty_course_check = empty_course_check
+        else:
+            # Else use the already loaded data
+            current_data, unique_names, unique_semesters, institute_data = st.session_state.data_loaded
 
     # Data load operation at the start, also loads lists for available semester and lecturers
-    current_data, unique_names, unique_semesters,institute_data = load_data(empty_course_check)
     unique_names_with_all = ["Alle"] + unique_names[1:]
 
     # **Export mode enabled: Multi-person export**

@@ -140,6 +140,7 @@ def dfs_course_catalog(catalog_url: str, session: requests.Session, semester: st
 
     # Everything else is the same as in the scraper.py
     current_links = find_links_onsite(soup)
+    print(current_links)
     open_link_list.extend(current_links)
 
     while open_link_list:
@@ -149,7 +150,7 @@ def dfs_course_catalog(catalog_url: str, session: requests.Session, semester: st
             try:
                 page_url, page_soup = get_soup(data_visit, session)
             except RequestException:
-                continue
+                pass
             print(data_visit)
             try:
                 course_data = get_course_data(page_soup)
@@ -162,10 +163,9 @@ def dfs_course_catalog(catalog_url: str, session: requests.Session, semester: st
             print(next_visit)
             try:
                 page_url, page_soup = get_soup(next_visit, session)
-            except RequestException:
                 closed_link_list.append(next_visit)
-                continue
-            closed_link_list.append(next_visit)
+            except RequestException:
+                pass
             current_links = find_links_onsite(page_soup)
             open_link_list.extend(current_links)
         else:
@@ -193,7 +193,7 @@ def get_course_data(soup: BeautifulSoup) -> list:
 
     # Get course title
     course_title_element = soup.find("h1")
-    course_title = course_title_element.get_text().strip().replace(" - Einzelansicht", "").replace(";", "-").replace(",","-") if course_title_element else ""
+    course_title = course_title_element.get_text().strip().replace(" - Einzelansicht", "").replace(";", "-").replace(",","-")
     data.append(course_title)
 
     # Get the "Fachbereiche" where the course is listed
@@ -208,7 +208,7 @@ def get_course_data(soup: BeautifulSoup) -> list:
     # Extract associated institutions ("Einrichtungen")
     einrichtungen_tags = soup.select('table[summary="Übersicht über die zugehörigen Einrichtungen"] td a')
     einrichtungen_liste = [tag.get_text().strip() for tag in einrichtungen_tags]
-    data.append(einrichtungen_liste if einrichtungen_liste else "")
+    data.append(einrichtungen_liste)
 
     # Extract responsible and other persons from the "Verantwortliche Dozenten" table
     tables = soup.select('table[summary="Verantwortliche Dozenten"]')
