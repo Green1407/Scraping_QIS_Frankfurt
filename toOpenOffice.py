@@ -28,6 +28,14 @@ def fill_word(name: str, semester: str, data: list[str], institute_data: pd.Data
     # Select the appropriate template based on the number of courses, select the bigger one if more than 9 courses
     link = "Beispiel_big.docx" if len(data) > 9 else "Beispiel.docx"
 
+    # If there is no data do not export as word doc
+    if len(data) < 1:
+        return 0
+
+    # Warning if lecturer is responsible for more than 18 courses
+    if len(data) > 18:
+        print(f"Achtung für {name} im Semester {semester} wurde die Maximalanzahl von 18 Veranstaltungen überschritten.")
+
     # Load the Word document
     doc = read_word(link)
 

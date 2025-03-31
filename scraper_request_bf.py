@@ -166,6 +166,7 @@ def dfs_course_catalog(catalog_url: str, session: requests.Session, semester: st
                 closed_link_list.append(next_visit)
             except RequestException:
                 pass
+            closed_link_list.append(next_visit)
             current_links = find_links_onsite(page_soup)
             open_link_list.extend(current_links)
         else:

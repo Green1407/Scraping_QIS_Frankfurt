@@ -164,7 +164,7 @@ def get_unique_semester(data: pd.DataFrame) -> list[str]:
 def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     """
     Takes the scraped course Data in Dataframe format and performs cleaning operations on the courses.
-    Not implemented yet only placeholder right now...
+    Right now it deletes courses with 0 SWS and courses with "Entfällt" in the title.
 
     Parameters:
     data (pd.DataFrame): The DataFrame containing the scraped course information.
@@ -172,10 +172,8 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     Returns: the processed dataframe
     """
     cleaned_data = data
-    #Here dummy code for data cleaning operations for example:
-    # z.B. SWS = 0 --> entfernen
-    # oder Vorlesung 1+2 --> dann Vorlesung 1 und Vorlesung 2 entfernen
-    # oder Vorlesung, Übung und Klausur,Nachklausur --> dann nur Vorlesung beibehalten
+    cleaned_data = cleaned_data[cleaned_data['SWS'] != 0]
+    cleaned_data = cleaned_data[~cleaned_data['Kursname'].str.contains('entfällt', case=False, na=False)]
     return cleaned_data
 
 
