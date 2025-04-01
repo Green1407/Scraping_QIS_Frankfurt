@@ -290,7 +290,7 @@ def scrape_buttons():
     with st.sidebar:
         # Checkbox to activate scraping tools
         scraping_aktiviert = st.checkbox("Scraping Tools aktivieren", key="scrape_checkbox", help="Diese Funktion ermöglicht das Scrapen von Daten für ein neues Semester aus dem QIS oder die Aktualisierung bestehender Semester. ACHTUNG: Für die Nutzung werden die Python-Bibliothek selenium, der selenium webdriver für Chrome sowie die entsprechende Google Chrome Webdriver-Erweiterung benötigt.")
-        scraping_requests = st.checkbox("Scraping-Tools v2. aktivieren", key="scrape_requests_checkbox", help="Nutzt statt Selenium, requests und beatiful soup. Hier wird kein Chrome Webbrowser mit Erweiterung benötigt und der Scraping Prozess ist deutlich schneller.")
+        scraping_requests = st.checkbox("Scraping-Tools v2. aktivieren", key="scrape_requests_checkbox", help="Nutzt statt selenium, requests und BeatifulSoup. Hier wird kein Chrome Webbrowser mit Erweiterung benötigt und der Scraping Prozess ist deutlich schneller. ACHTUNG: Bei Nutzung eines VPN oder Proxy-Servers kann es zu Fehler beim Scrapen kommen")
 
         # Ensure that not both boxes are activated
         if scraping_aktiviert and scraping_requests:
