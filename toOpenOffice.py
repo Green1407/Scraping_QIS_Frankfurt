@@ -28,8 +28,8 @@ def fill_word(name: str, semester: str, data: list[str], institute_data: pd.Data
     # Select the appropriate template based on the number of courses, select the bigger one if more than 9 courses
     link = "Beispiel_big.docx" if len(data) > 9 else "Beispiel.docx"
 
-    # If there is no data do not export as word doc
-    if len(data) < 1:
+    # If there is no data do not export as word doc and alternativly do not export if not desired institute
+    if len(data) < 1: #or get_institute(name,institute_data) != "Institut für Informatik (IfI):
         return 0
 
     # Warning if lecturer is responsible for more than 18 courses
